@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+:root{
+    --gridBorderEmpty: rgba(184, 183, 183, 0.541);
+    --gridBorderTyped: rgba(105, 105, 105, 0.541);
+}
+
 .navbar{
     background-color: whitesmoke;
     width: 100%;
@@ -14,12 +19,11 @@
 
 .nav-parent-list{
     display: flex;
-    width: 50%;
     flex-direction: row;
     height: inherit;
     list-style: none;
     justify-content: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:'Courier New', Courier, monospace;
     font-size: 1.2em;
 }
 
@@ -27,7 +31,6 @@
 .nav-parent-list li{
     background-color:whitesmoke;
     height: inherit;
-    width: 50%;
     padding-inline: 5dvw;
     align-content: center;
     text-align: center;
@@ -48,45 +51,53 @@
 }
 
 .word-grid{
-    min-width: 400px;
-    max-width: 600px;
+    width: fit-content;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    /* grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr); */
     gap: 5px;
-    aspect-ratio: 5/6;
 }
 
 .word-grid div{
+    width: 55px;
     aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(128, 128, 128, 0.541);
     border-radius: 5px;
     transition-duration: 0.2s;
     
-    font-size: 1.7em;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
+    
 }
 
-.word-grid-item-normal{
+.word-grid-item-untyped{
+    border: 2.5px solid var(--gridBorderEmpty);
+    color: rgb(38, 38, 38);
+}
+
+
+.word-grid-item-typed{
+    border: 2.5px solid var(--gridBorderTyped);
+    color: rgb(38, 38, 38);
+}
+
+.word-grid-item-wrong{
     background-color: rgb(153, 153, 153);
+    border: none;
     color: white;
 }
 
 .word-grid-item-exist{
-    background-color: rgb(255, 219, 61);
+    background-color: rgb(244, 205, 32);
+    border: none;
     color: white;
 }
 
 .word-grid-item-correct{
     background-color: rgb(40, 160, 4);
+    border: none;
     color: white;
-}
-
-
-.word-grid div:hover{
-    scale: 1.05;
 }

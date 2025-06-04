@@ -10,49 +10,20 @@
 <body>
     <nav class="navbar">
         <ul class="nav-parent-list">
-            <li> Restart </li>
-            <li> New Game </li>
+            <li id="restart-button"> New Game </li>
+            <li id="surrender-button"> Surrender </li>
+            <li id="customGame-button"> Custom </li>
         </ul>
     </nav>
-
+    
     <main>
         <div class="main-container">
-            <div id="word-grid" class="word-grid">
-                <div class="word-grid-item-normal">  W </div>
-                <div class="word-grid-item">         O </div>
-                <div class="word-grid-item-exist">   R </div>
-                <div class="word-grid-item-correct"> D </div>
-                <div class="word-grid-item">         S </div>
-
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
+            <div id="word-grid" class="word-grid"></div>
             
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-                <div class="word-grid-item">  </div>
-            </div>
             <div id="keyboard-keys"></div>
         </div>
+        
+        <script src="script.js"></script>
     </main>
 </body>
 </html>

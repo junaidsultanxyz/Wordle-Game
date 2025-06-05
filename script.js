@@ -15,10 +15,10 @@ let alphabets =
  'U', 'V', 'W', 'X', 'Y', 'Z'
 ]; // all the alphabets (will be used for keyboard layout)
 
-let total_chances   = 7;
-let word_length     = 7; 
+let total_chances   = 6;
+let word_length     = 5; 
 
-let word; // representing current word to guess
+let word = ""; // representing current word to guess
 let current_chance; // representing row
 let current_index;  // represnting column
 
@@ -34,7 +34,7 @@ let word_grid_items;
 
 function restart() {
     word_grid.innerHTML = "";
-
+    current_word = "";
 
     current_chance = 0;
     current_index  = 0;
@@ -53,6 +53,8 @@ function restart() {
     word_grid_items = word_grid.querySelectorAll("div")
 
     word = data[Math.floor(Math.random() * data.length)];
+
+    window.alert(word);
 }
 
 
@@ -61,12 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-    console.log(current_index + '\n');
     
     if (/^Key[A-Z]$/.test(event.code)) {
         if (word_grid_items[getIndex()].className == "word-grid-item-untyped"){
             word_grid_items[getIndex()].className = "word-grid-item-typed";
             word_grid_items[getIndex()].textContent = event.key.toUpperCase();
+            current_word = current_word + event.key.toUpperCase();
+            console.log(current_word);
         }
         
         if (current_index < word_length-1) {
@@ -80,10 +83,11 @@ document.addEventListener("keydown", (event) => {
         if (current_index > 0 || current_index == 0) {
             valid = true;
         }
-
+        
         if (valid) {
             word_grid_items[getIndex()].className = "word-grid-item-untyped";
             word_grid_items[getIndex()].textContent = '';
+
         }
 
         if (current_index > 0) {
@@ -93,19 +97,32 @@ document.addEventListener("keydown", (event) => {
 
     if (event.key === "Enter"){
         let valid = false;
+        let correct = true;
 
         if (word_grid_items[getIndex()].className == "word-grid-item-untyped"){
             window.alert("incomplete word"); 
         }
         else if (current_index == word_length-1 && word_grid_items[getIndex()].className == "word-grid-item-typed"){
+
             for (let i = 0; i < word_length; i++){
-                word_grid_items[getIndexParam(i, current_chance)].className = "word-grid-item-wrong";
+                if (word_grid_items[getIndexParam(i, current_chance)].textContent === word[i]){
+                    word_grid_items[getIndexParam(i, current_chance)].className = "word-grid-item-correct";
+                }
+                else if (word.includes(word_grid_items[getIndexParam(i, current_chance)].textContent)){
+                    word_grid_items[getIndexParam(i, current_chance)].className = "word-grid-item-exist";
+                    correct = false;
+                }
+                else {
+                    word_grid_items[getIndexParam(i, current_chance)].className = "word-grid-item-wrong";
+                    correct = false;
+                }
             }
             
+            current_word = "";
             valid = true;
         }
 
-        if (valid && current_chance < total_chances){
+        if (valid && current_chance < total_chances && !correct){
             current_chance++;
             current_index = 0;
         }

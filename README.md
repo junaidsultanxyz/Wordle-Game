@@ -1,3 +1,3 @@
-# Worlde-Game
+# Wordle-Game
 
 ![alt text](image.png)
